@@ -1,2 +1,2 @@
 # tip-calculator
-Exercise 3.5 - initial code
+Exercise 3.5 - Brian Bansenauer code
