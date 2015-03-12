@@ -6,7 +6,7 @@
 *.dex
 
 #Android Studio files
-workspace.xml
+#workspace.xml
 
 # Java class files
 *.class
