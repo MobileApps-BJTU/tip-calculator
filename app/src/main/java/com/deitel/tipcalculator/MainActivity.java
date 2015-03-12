@@ -23,8 +23,10 @@ public class MainActivity extends Activity
       NumberFormat.getPercentInstance();
 
    private double billAmount = 0.0; // bill amount entered by the user
+   private int partySize = 1; //the number of the customer
    private double customPercent = 0.18; // initial custom tip percentage
    private TextView amountDisplayTextView; // shows formatted bill amount
+   private EditText partySizeEditText; //the party size
    private TextView percentCustomTextView; // shows custom tip percentage
    private TextView tip15TextView; // shows 15% tip
    private TextView total15TextView; // shows total with 15% tip
@@ -49,10 +51,13 @@ public class MainActivity extends Activity
       tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
-            
+      partySizeEditText = 
+         (EditText) findViewById(R.id.partySizeEditText);
+      
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
          currencyFormat.format(billAmount));
+      partySizeEditText.setText(String.valueOf(partySize));
       updateStandard(); // update the 15% tip TextViews
       updateCustom(); // update the custom tip TextViews
 
@@ -60,7 +65,8 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
-      
+      // set partySizeEditText's TextWatcher
+      partySizeEditText.addTextChangedListener(partySizeEditTextWatcher);
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
          (SeekBar) findViewById(R.id.customTipSeekBar);
@@ -76,7 +82,7 @@ public class MainActivity extends Activity
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
-      total15TextView.setText(currencyFormat.format(fifteenPercentTotal));
+      total15TextView.setText(currencyFormat.format(fifteenPercentTotal/partySize));
    } // end method updateStandard
 
    // updates the custom tip and total TextViews
@@ -91,7 +97,7 @@ public class MainActivity extends Activity
 
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
-      totalCustomTextView.setText(currencyFormat.format(customTotal));
+      totalCustomTextView.setText(currencyFormat.format(customTotal/partySize));
    } // end method updateCustom
    
    // called when the user changes the position of SeekBar
@@ -154,6 +160,45 @@ public class MainActivity extends Activity
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+   
+// event-handling object that responds to partySizeEditText's events
+   private TextWatcher partySizeEditTextWatcher = new TextWatcher() 
+   {
+      // called when the user enters a number
+      @Override
+      public void onTextChanged(CharSequence s, int start, 
+         int before, int count) 
+      {         
+         // convert partySizeEditText's text to a int
+         try
+         {
+            partySize = Integer.parseInt(s.toString());
+            partySize = partySize == 0?1:partySize;
+         }
+         catch (NumberFormatException e)
+         {
+        	 partySize = 1; // default if an exception occurs
+         } // end catch 
+
+         // display currency formatted bill amount
+         //partySizeEditText.setText(String.valueOf(partySize));
+         updateStandard(); // update the 15% tip TextViews
+         updateCustom(); // update the custom tip TextViews
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) 
+      {
+      }
+
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count,
+         int after) 
+      {
+      }
+   };
+   
+   
 } // end class MainActivity
 
 
