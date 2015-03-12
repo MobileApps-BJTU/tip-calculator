@@ -31,6 +31,8 @@ public class MainActivity extends Activity
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
 
+   private int personNum = 0; // person number in party
+
    // called when the activity is first created
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +51,7 @@ public class MainActivity extends Activity
       tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
+
             
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
@@ -60,7 +63,11 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
-      
+
+      // get reference of person number edit box
+      EditText personEditText = (EditText)findViewById(R.id.personNumEditText);
+      personEditText.setText(Integer.toString(personNum));
+      personEditText.addTextChangedListener(personEditTextWatcher);
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
          (SeekBar) findViewById(R.id.customTipSeekBar);
@@ -72,7 +79,10 @@ public class MainActivity extends Activity
    {
       // calculate 15% tip and total
       double fifteenPercentTip = billAmount * 0.15;
-      double fifteenPercentTotal = billAmount + fifteenPercentTip;
+      double fifteenPercentTotal = 0.0;
+      if(personNum>0) { // if the total person number is not zero
+          fifteenPercentTotal = (billAmount + fifteenPercentTip) / (double) personNum;
+      }
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
@@ -87,13 +97,15 @@ public class MainActivity extends Activity
 
       // calculate the custom tip and total
       double customTip = billAmount * customPercent;
-      double customTotal = billAmount + customTip;
+      double customTotal = 0.0;
+      if( personNum>0 ) // if person number not zero
+            customTotal = (billAmount + customTip) / (double)personNum;
 
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
       totalCustomTextView.setText(currencyFormat.format(customTotal));
    } // end method updateCustom
-   
+
    // called when the user changes the position of SeekBar
    private OnSeekBarChangeListener customSeekBarListener = 
       new OnSeekBarChangeListener() 
@@ -142,7 +154,6 @@ public class MainActivity extends Activity
          updateStandard(); // update the 15% tip TextViews
          updateCustom(); // update the custom tip TextViews
       } // end method onTextChanged
-
       @Override
       public void afterTextChanged(Editable s) 
       {
@@ -154,6 +165,29 @@ public class MainActivity extends Activity
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+
+    private TextWatcher personEditTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            try
+            {
+                personNum = Integer.parseInt(s.toString());
+            }
+            catch (NumberFormatException e)
+            {
+                personNum = 0; // default if an exception occurs
+            } // end catch
+
+            updateStandard(); // update the 15% tip TextViews
+            updateCustom(); // update the custom tip TextViews
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
 } // end class MainActivity
 
 
