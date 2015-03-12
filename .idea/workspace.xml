@@ -18,8 +18,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14394623-452b-43ac-bae2-29833ce5a6d9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TipCalculator.iws" />
@@ -1031,7 +1029,11 @@
       <created>1426163528268</created>
       <updated>1426163528268</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Mission Complete Again _(:зゝ∠)_">
+      <created>1426171597704</created>
+      <updated>1426171597704</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1105,7 +1107,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Mission Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mission Complete" />
+    <MESSAGE value="Mission Complete Again _(:зゝ∠)_" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mission Complete Again _(:зゝ∠)_" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1150,6 +1153,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.6221198" vertical-offset="924" max-vertical-offset="25344">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
