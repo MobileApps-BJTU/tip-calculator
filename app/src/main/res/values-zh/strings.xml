@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">增强型小费计算器</string>
+    <string name="amount">费用</string>
+    <string name="fifteen_percent">15%</string>
+    <string name="eighteen_percent">18%</string>
+    <string name="custom_tip_percentage">Custom %</string>
+    <string name="tip">总费用</string>
+    <string name="total">每个人需支付</string>
+    <string name="numberInParty">人数</string>
+
+</resources>
