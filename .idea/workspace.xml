@@ -12,7 +12,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.deitel.tipcalculator" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14394623-452b-43ac-bae2-29833ce5a6d9" name="Default" comment="first draft submissin">
+    <list default="true" id="14394623-452b-43ac-bae2-29833ce5a6d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TipCalculator.iws" />
@@ -1256,7 +1256,11 @@
       <created>1426124347704</created>
       <updated>1426124347704</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="last workspace">
+      <created>1426126850454</created>
+      <updated>1426126850454</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1309,7 +1313,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="first draft submissin" />
-    <option name="LAST_COMMIT_MESSAGE" value="first draft submissin" />
+    <MESSAGE value="last workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="last workspace" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
