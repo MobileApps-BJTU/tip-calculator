@@ -8,5 +8,15 @@
     <string name="custom_tip_percentage">Custom %</string>
     <string name="tip">Tip</string>
     <string name="total">Total</string>
-    
+    <string name="number_of_person">Number of person</string>
+    <string name="Average">Average</string>
+    <string name="Number">Number</string>
+
+    <string name="总量">总量</string>
+    <string name="人数">人数</string>
+    <string name="比例">比例</string>
+    <string name="小费">小费</string>
+    <string name="总计">总计</string>
+    <string name="平均">平均</string>
+
 </resources>

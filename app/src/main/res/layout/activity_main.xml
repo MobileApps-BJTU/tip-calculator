@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gridLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:columnCount="2"
     android:orientation="horizontal"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -16,7 +16,7 @@
         android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="end|center_vertical"
         android:labelFor="@+id/amountEditText"
         android:text="@string/amount"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -32,7 +32,7 @@
         android:maxLength="6" >
 
         <requestFocus />
-    </EditText>       
+    </EditText>
 
     <TextView
         android:id="@+id/amountDisplayTextView"
@@ -45,12 +45,16 @@
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="end|center_vertical"
         android:text="@string/custom_tip_percentage"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"/>
+
 
     <SeekBar
         android:id="@+id/customTipSeekBar"
@@ -89,13 +93,16 @@
 
     <TextView
         android:id="@+id/tipTextView"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="end|center_vertical"
         android:text="@string/tip"
-        android:textAppearance="?android:attr/textAppearanceMedium"  />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/tipLinearLayout"
         android:layout_height="wrap_content"
+        android:layout_row="4"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal" >
 
@@ -104,11 +111,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/textview_margin"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -119,20 +126,92 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/totalTextView"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="end|center_vertical"
         android:text="@string/total"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="0"/>
+
+    <LinearLayout
+        android:id="@+id/averageLinearLayout"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="6"
+        android:layout_column="1">
+
+        <TextView
+            android:id="@+id/average15TextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center"
+            android:padding="@dimen/textview_padding"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/averageCustomTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center"
+            android:padding="@dimen/textview_padding"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/numberTextView"
+        android:layout_gravity="end|center_vertical"
+        android:text="@string/Number"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/numberDisplayTextView"
+        android:layout_row="1"
+        android:layout_column="0"/>
+
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="6"
+        android:background="@android:color/holo_blue_bright"
+        >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/amountTextView2"
+        android:layout_gravity="end|center_vertical"
+        android:text="@string/Average"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="6"
+        android:layout_column="0"/>
 
     <LinearLayout
         android:id="@+id/totalLinearLayout"
         android:layout_height="wrap_content"
+        android:layout_row="5"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal" >
 
@@ -141,11 +220,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/textview_margin"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -156,10 +235,28 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <RelativeLayout
+        android:id="@+id/listenerLayout"
+        android:layout_height="wrap_content"
+        android:layout_row="7"
+        android:layout_column="1"
+        android:layout_gravity="center"
+        android:layout_below="@+id/averageLinearLayout">
+
+        <Button
+            android:id="@+id/transferButton"
+            android:text="Transfer To Chinese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </RelativeLayout>
+    <Space />
+
 
 </GridLayout>
