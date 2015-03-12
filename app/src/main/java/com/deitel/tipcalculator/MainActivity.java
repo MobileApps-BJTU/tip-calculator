@@ -30,6 +30,7 @@ public class MainActivity extends Activity
    private TextView total15TextView; // shows total with 15% tip
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
+    private int partySize;
 
    // called when the activity is first created
    @Override
