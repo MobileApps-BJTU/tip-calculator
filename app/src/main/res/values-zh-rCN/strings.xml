@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="app_name">消费计算器</string>swww
+        <string name="amount">金额</string>
+        <string name="fifteen_percent">15%</string>
+        <string name="eighteen_percent">18%</string>
+        <string name="custom_tip_percentage">定制 %</string>
+        <string name="tip">消费</string>
+        <string name="total_per_person">每人费用</string>
+        <string name="number_people">参与人数</string>
+        <string name="number">1</string>
+    </resources>
+</resources>

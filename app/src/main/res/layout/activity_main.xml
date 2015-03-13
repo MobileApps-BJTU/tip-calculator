@@ -30,9 +30,8 @@
         android:digits="0123456789"
         android:inputType="number"
         android:maxLength="6" >
-
         <requestFocus />
-    </EditText>       
+    </EditText>
 
     <TextView
         android:id="@+id/amountDisplayTextView"
@@ -45,7 +44,36 @@
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <TextView
+        android:id="@+id/numberPeopleTextView"
+        android:layout_width="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:text="@string/number_people"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <EditText
+        android:id="@+id/numberPeopleEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="123456789"
+        android:inputType="number"
+        android:maxLength="6"
+        android:text="@string/number">
+    </EditText>
+
+    <TextView
+        android:id="@+id/numberPeopleDisplayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="1"
+        android:background="@android:color/holo_blue_bright"
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -58,7 +86,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="fill_horizontal"
         android:max="30"
-        android:progress="18" />
+        android:progress="18"
+        android:indeterminate="false" />
 
     <LinearLayout
         android:id="@+id/percentLinearLayout"
@@ -108,7 +137,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -119,7 +148,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
@@ -127,7 +156,7 @@
     <TextView
         android:id="@+id/totalTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/total"
+        android:text="@string/total_per_person"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
@@ -145,7 +174,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -156,10 +185,11 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <Space />
 
 </GridLayout>
