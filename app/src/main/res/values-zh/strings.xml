@@ -9,5 +9,6 @@
     <string name="tip">小费</string>
     <string name="total">总价</string>
     <string name="people">人数</string>
+    <string name="peopleA">单人价格</string>
 
 </resources>

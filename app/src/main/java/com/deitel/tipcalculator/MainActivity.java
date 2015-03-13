@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
     private double customPercent = 0.18; // initial custom tip percentage
     private int people = 1;
     private TextView amountDisplayTextView; // shows formatted bill amount
+    private TextView amountDisplayTextView2;
     private TextView percentCustomTextView; // shows custom tip percentage
     private TextView tip15TextView; // shows 15% tip
     private TextView total15TextView; // shows total with 15% tip
@@ -48,6 +49,7 @@ public class MainActivity extends Activity {
         // get references to the TextViews
         // that MainActivity interacts with programmatically
         amountDisplayTextView = (TextView) findViewById(R.id.amountDisplayTextView);
+        amountDisplayTextView2 = (TextView)findViewById(R.id.amountDisplayTextView2);
         percentCustomTextView = (TextView) findViewById(R.id.percentCustomTextView);
         tip15TextView = (TextView) findViewById(R.id.tip15TextView);
         total15TextView = (TextView) findViewById(R.id.total15TextView);
@@ -67,7 +69,7 @@ public class MainActivity extends Activity {
 
         final EditText ev = (EditText) findViewById(R.id.EditText);
 
-        ev.setText(String.valueOf(people));
+        amountDisplayTextView2.setText(String.valueOf(people));
         ev.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -89,6 +91,7 @@ public class MainActivity extends Activity {
                 } catch (NumberFormatException e) {
                     people = 1;
                 }
+                amountDisplayTextView2.setText(String.valueOf(people));
                 updateCustomSplit();
                 updateStandardSplit();
             }

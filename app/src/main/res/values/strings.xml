@@ -9,4 +9,5 @@
     <string name="tip">Tip</string>
     <string name="total">Total</string>
     <string name="people">number in party</string>
+    <string name="peopleA">Total per person</string>
 </resources>

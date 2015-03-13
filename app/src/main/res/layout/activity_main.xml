@@ -45,6 +45,36 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:text="@string/people"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="6" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/amountDisplayTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="1"
+        android:background="@android:color/holo_blue_bright"
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -157,14 +187,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
-    <Space />
 
     <TextView
         android:id="@+id/TextView01"
         android:layout_column="0"
         android:layout_gravity="right|top"
-        android:layout_row="5"
-        android:text="@string/people"
+        android:layout_row="6"
+        android:text="@string/peopleA"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
@@ -172,7 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_column="4"
         android:layout_gravity="fill_horizontal|top"
-        android:layout_row="9" >
+        android:layout_row="6" >
 
         <TextView
             android:id="@+id/splitTextView2"
@@ -196,18 +225,5 @@
             android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
-
-
-    <EditText
-        android:id="@+id/EditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="4"
-        android:layout_gravity="left|top"
-        android:layout_row="5"
-        android:digits="0123456789"
-        android:ems="10"
-        android:inputType="number"
-        android:maxLength="6" />
 
 </GridLayout>
