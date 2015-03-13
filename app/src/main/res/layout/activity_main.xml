@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
-        android:labelFor="@+id/amountEditText"
         android:text="@string/amount"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -32,7 +31,7 @@
         android:maxLength="6" >
 
         <requestFocus />
-    </EditText>       
+    </EditText>
 
     <TextView
         android:id="@+id/amountDisplayTextView"
@@ -45,7 +44,35 @@
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <TextView
+        android:id="@+id/person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:text="@string/personAmount"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/personAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/personDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="1"
+        android:background="@android:color/holo_blue_bright"
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -84,14 +111,13 @@
             android:gravity="center"
             android:text="@string/eighteen_percent"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/tipTextView"
         android:layout_gravity="right|center_vertical"
         android:text="@string/tip"
-        android:textAppearance="?android:attr/textAppearanceMedium"  />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
         android:id="@+id/tipLinearLayout"
@@ -108,7 +134,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -119,9 +145,8 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
     <TextView
@@ -131,13 +156,13 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
-        android:id="@+id/totalLinearLayout"
+        android:id="@+id/totalPerPersonLinearLayout"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal" >
 
         <TextView
-            android:id="@+id/total15TextView"
+            android:id="@+id/totalPerPerson15TextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -145,21 +170,43 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/totalCustomTextView"
+            android:id="@+id/totalPerPersonTextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
-    <Space />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Language" >
+
+        <RadioButton
+            android:id="@+id/radioCN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="简体中文" >
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/radioEN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English" >
+        </RadioButton>
+    </RadioGroup>
+
+    <Space />
 
 </GridLayout>
