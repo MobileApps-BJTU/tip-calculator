@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="@string/amount"
+        android:text="消费额"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="Numbers"
+        android:text="人数"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -71,7 +71,7 @@
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/custom_tip_percentage"
+        android:text="小费比例%"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
@@ -112,7 +112,7 @@
     <TextView
         android:id="@+id/tipTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/TotalTip"
+        android:text="小费总数"
         android:textAppearance="?android:attr/textAppearanceMedium"  />
 
     <LinearLayout
@@ -149,7 +149,7 @@
     <TextView
         android:id="@+id/totalTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/Per_person"
+        android:text="人均付账"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
@@ -188,7 +188,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="@string/TotalBill"
+        android:text="总账单"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
         android:id="@+id/totalBill"
