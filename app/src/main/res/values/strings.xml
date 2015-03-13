@@ -8,5 +8,9 @@
     <string name="custom_tip_percentage">Custom %</string>
     <string name="tip">Tip</string>
     <string name="total">Total</string>
-    
+    <string name="number">Member Number</string>
+    <string name="alert">Alert</string>
+    <string name="message">The number can\'t be negative!</string>
+    <string name="sure">Sure</string>
+
 </resources>
