@@ -16,7 +16,7 @@ import android.widget.TextView; // for displaying text
 // MainActivity class for the Tip Calculator app
 public class MainActivity extends Activity
 {
-    // currency and percent formatters
+    // currency and percent formatter
     private static final NumberFormat currencyFormat =
             NumberFormat.getCurrencyInstance();
     private static final NumberFormat percentFormat =
