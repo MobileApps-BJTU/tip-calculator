@@ -5,6 +5,9 @@ package com.deitel.tipcalculator;
 import java.text.NumberFormat; // for currency formatting
 
 import android.app.Activity; // base class for activities
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle; // for saving state information
 import android.text.Editable; // for EditText event handling
 import android.text.TextWatcher; // EditText listener
@@ -16,9 +19,13 @@ import android.widget.TextView; // for displaying text
 // MainActivity class for the Tip Calculator app
 public class MainActivity extends Activity 
 {
-   // currency and percent formatters 
+
+
+   // currency and percent and integer formatters
    private static final NumberFormat currencyFormat = 
       NumberFormat.getCurrencyInstance();
+   private static final NumberFormat intFormat =
+      NumberFormat.getIntegerInstance();
    private static final NumberFormat percentFormat = 
       NumberFormat.getPercentInstance();
 
@@ -30,6 +37,9 @@ public class MainActivity extends Activity
    private TextView total15TextView; // shows total with 15% tip
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
+   private int partyNumber = 1;//partynumber entered by the user
+   private TextView partynumberDisplayTextView;
+   private Dialog alertDialog;
 
    // called when the activity is first created
    @Override
@@ -38,10 +48,21 @@ public class MainActivity extends Activity
       super.onCreate(savedInstanceState); // call superclass's version
       setContentView(R.layout.activity_main); // inflate the GUI
 
+       alertDialog = new AlertDialog.Builder(this).setTitle("Warning").
+               setMessage("The partynumber should be natural number").
+               setPositiveButton("OK", new
+                       DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialogInterface, int i) {
+
+                           }
+                       }).create();
       // get references to the TextViews 
       // that MainActivity interacts with programmatically
       amountDisplayTextView = 
          (TextView) findViewById(R.id.amountDisplayTextView);
+      partynumberDisplayTextView =
+         (TextView) findViewById(R.id.partynumberDisplayTextView);
       percentCustomTextView = 
          (TextView) findViewById(R.id.percentCustomTextView);
       tip15TextView = (TextView) findViewById(R.id.tip15TextView);
@@ -49,13 +70,19 @@ public class MainActivity extends Activity
       tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
-            
+
+
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
          currencyFormat.format(billAmount));
+      partynumberDisplayTextView.setText(
+         intFormat.format(partyNumber));
       updateStandard(); // update the 15% tip TextViews
       updateCustom(); // update the custom tip TextViews
 
+       //set partynumberEditText's TextWatcher
+       EditText partynumberEditText = (EditText) findViewById(R.id.partynumberEditText);
+       partynumberEditText.addTextChangedListener(partynumberEditTextWatcher);
       // set amountEditText's TextWatcher
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
@@ -72,7 +99,7 @@ public class MainActivity extends Activity
    {
       // calculate 15% tip and total
       double fifteenPercentTip = billAmount * 0.15;
-      double fifteenPercentTotal = billAmount + fifteenPercentTip;
+      double fifteenPercentTotal = (billAmount + fifteenPercentTip)/partyNumber;
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
@@ -87,7 +114,7 @@ public class MainActivity extends Activity
 
       // calculate the custom tip and total
       double customTip = billAmount * customPercent;
-      double customTotal = billAmount + customTip;
+      double customTotal = (billAmount + customTip)/partyNumber;
 
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
@@ -120,40 +147,83 @@ public class MainActivity extends Activity
    }; // end OnSeekBarChangeListener
 
    // event-handling object that responds to amountEditText's events
-   private TextWatcher amountEditTextWatcher = new TextWatcher() 
-   {
-      // called when the user enters a number
-      @Override
-      public void onTextChanged(CharSequence s, int start, 
-         int before, int count) 
-      {         
-         // convert amountEditText's text to a double
-         try
-         {
-            billAmount = Double.parseDouble(s.toString()) / 100.0;
-         } // end try
-         catch (NumberFormatException e)
-         {
-            billAmount = 0.0; // default if an exception occurs
-         } // end catch 
+   private TextWatcher amountEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+        int before, int count)
+        {
+            // convert amountEditText's text to a double
+            try
+            {
+                billAmount = Double.parseDouble(s.toString()) / 100.0;
+            } // end try
+            catch (NumberFormatException e)
+            {
+                billAmount = 0.0; // default if an exception occurs
+            } // end catch
 
-         // display currency formatted bill amount
-         amountDisplayTextView.setText(currencyFormat.format(billAmount));
-         updateStandard(); // update the 15% tip TextViews
-         updateCustom(); // update the custom tip TextViews
-      } // end method onTextChanged
+            // display currency formatted bill amount
+            amountDisplayTextView.setText(currencyFormat.format(billAmount));
+            updateStandard(); // update the 15% tip TextViews
+            updateCustom(); // update the custom tip TextViews
+        } // end method onTextChanged
 
-      @Override
-      public void afterTextChanged(Editable s) 
-      {
-      } // end method afterTextChanged
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+        } // end method afterTextChanged
 
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count,
-         int after) 
-      {
-      } // end method beforeTextChanged
-   }; // end amountEditTextWatcher
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+        int after)
+        {
+        } // end method beforeTextChanged
+    }; // end amountEditTextWatcher
+    private TextWatcher partynumberEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+                                  int before, int count)
+        {
+            // convert amountEditText's text to a double
+            try
+            {
+
+                partyNumber = Integer.parseInt(s.toString());
+                if(partyNumber<=0){
+                    //partynumberDisplayTextView.setError("!@#$");
+                    alertDialog.show();
+                }
+
+            } // end try
+            catch (NumberFormatException e)
+            {
+                partyNumber = 1; // default if an exception occurs
+            } // end catch
+
+            // display currency formatted bill amount
+
+
+                partynumberDisplayTextView.setText(intFormat.format(partyNumber));
+
+            updateStandard(); // update the 15% tip TextViews
+            updateCustom(); // update the custom tip TextViews
+        } // end method onTextChanged
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+        } // end method afterTextChanged
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after)
+        {
+        } // end method beforeTextChanged
+    }; // end amountEditTextWatcher
 } // end class MainActivity
 
 
