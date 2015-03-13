@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tip Calculator</string>
+    <string name="amount">量</string>
+    <string name="fifteen_percent">15%</string>
+    <string name="eighteen_percent">18%</string>
+    <string name="custom_tip_percentage">自定义 %</string>
+    <string name="tip">小费</string>
+    <string name="total">总额</string>
+    <string name="customer">人数:</string>
+    <string name="eachcustomer">每人</string>
+</resources>
