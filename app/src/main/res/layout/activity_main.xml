@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:useDefaultMargins="true"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/amountTextView"
@@ -31,8 +31,8 @@
         android:inputType="number"
         android:maxLength="6" >
 
-        <requestFocus />
-    </EditText>       
+
+    </EditText>
 
     <TextView
         android:id="@+id/amountDisplayTextView"
@@ -44,8 +44,30 @@
         android:background="@android:color/holo_blue_bright"
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:labelFor="@+id/amountEditText"
+        android:text="Numbers"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <EditText
+        android:id="@+id/totalPeople"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+
+        android:text="2"
+        android:inputType="number"
+        android:maxLength="6"
+        android:digits="0123456789"
+        >
+
+
+    </EditText>
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -90,7 +112,7 @@
     <TextView
         android:id="@+id/tipTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/tip"
+        android:text="@string/TotalTip"
         android:textAppearance="?android:attr/textAppearanceMedium"  />
 
     <LinearLayout
@@ -108,7 +130,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -119,7 +141,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
@@ -127,7 +149,7 @@
     <TextView
         android:id="@+id/totalTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/total"
+        android:text="@string/Per_person"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
@@ -145,7 +167,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -156,10 +178,30 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:labelFor="@+id/amountEditText"
+        android:text="@string/TotalBill"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/totalBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+
+    <Space />
 
 </GridLayout>
