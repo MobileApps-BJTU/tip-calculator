@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="number in party"
+        android:text="@string/number_in_party"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -111,7 +111,7 @@
     <TextView
         android:id="@+id/tipTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="total tip"
+        android:text="@string/tip"
         android:textAppearance="?android:attr/textAppearanceMedium"  />
 
     <LinearLayout
@@ -148,7 +148,7 @@
     <TextView
         android:id="@+id/totalTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="total per person"
+        android:text="@string/total"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
