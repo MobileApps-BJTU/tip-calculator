@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="@string/amount"
+        android:text="testing"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -160,6 +160,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <Space />
 
 </GridLayout>
