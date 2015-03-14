@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">小费计算器</string>
+    <string name="amount">数量</string>
+    <string name="average">人均</string>
+    <string name="custom_tip_percentage">比率</string>
+    <string name="people">人数</string>
+    <string name="tip">小费</string>
+    <string name="total">合计</string>
+</resources>
