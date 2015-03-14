@@ -1,16 +1,16 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gridLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="2"
-    android:orientation="horizontal"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:useDefaultMargins="true"
-    tools:context=".MainActivity" >
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:useDefaultMargins="true"
+            tools:context=".MainActivity" >
 
     <TextView
         android:id="@+id/amountTextView"
@@ -32,7 +32,7 @@
         android:maxLength="6" >
 
         <requestFocus />
-    </EditText>       
+    </EditText>
 
     <TextView
         android:id="@+id/amountDisplayTextView"
@@ -45,7 +45,38 @@
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <TextView
+        android:id="@+id/numberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:labelFor="@+id/numberEditText"
+        android:text="@string/number"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="2" >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/numberDisplayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="1"
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -88,13 +119,13 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tipTextView"
+        android:id="@+id/totalTipTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/tip"
+        android:text="@string/total_tip"
         android:textAppearance="?android:attr/textAppearanceMedium"  />
 
     <LinearLayout
-        android:id="@+id/tipLinearLayout"
+        android:id="@+id/totalTipLinearLayout"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal" >
@@ -108,7 +139,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -119,25 +150,26 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 
+
     <TextView
-        android:id="@+id/totalTextView"
+        android:id="@+id/totalPerPersonTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/total"
+        android:text="@string/total_per_person"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
-        android:id="@+id/totalLinearLayout"
+        android:id="@+id/totalPerPersonLinearLayout"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal" >
 
         <TextView
-            android:id="@+id/total15TextView"
+            android:id="@+id/totalPerPerson15TextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -145,21 +177,23 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/totalCustomTextView"
+            android:id="@+id/totalPerPersonCustomTextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+
+    <Space />
 
 </GridLayout>
