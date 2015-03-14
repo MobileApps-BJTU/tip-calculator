@@ -45,6 +45,23 @@
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <TextView
+        android:id="@+id/peopleNumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:text="@string/number_of_people"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <EditText
+        android:id="@+id/peopleNumEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="6"/>
+
     <TextView 
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
@@ -160,6 +177,43 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <TextView
+        android:id="@+id/totalPerPeopleTextView"
+        android:layout_gravity="right|center_vertical"
+        android:text="@string/totalPerPeople"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:id="@+id/totalPerPeopleLinearLayout"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal" >
+
+        <TextView
+            android:id="@+id/totalPerPeople15TextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/textview_margin"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center"
+            android:padding="@dimen/textview_padding"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/totalPerPeopleCustomTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center"
+            android:padding="@dimen/textview_padding"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    <Space />
 
 </GridLayout>
