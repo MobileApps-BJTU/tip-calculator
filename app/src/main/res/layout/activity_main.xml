@@ -45,7 +45,29 @@
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <TextView
+        android:id="@+id/partyTextView"
+        android:layout_width="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:labelFor="@+id/partyEditText"
+        android:text="@string/party_number"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/partyEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="2" >
+
+    </EditText>
+
+
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -160,6 +182,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <Space />
 
 </GridLayout>
