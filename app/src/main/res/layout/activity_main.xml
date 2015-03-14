@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="testing"
+        android:text="Amount"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -41,6 +41,37 @@
         android:layout_column="1"
         android:layout_gravity="fill_horizontal"
         android:layout_row="0"
+        android:background="@android:color/holo_blue_bright"
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/amountEditText"
+        android:text="number in party"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <EditText
+        android:id="@+id/customerEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="6" >
+
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/customerDisplayTextView"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
         android:background="@android:color/holo_blue_bright"
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
