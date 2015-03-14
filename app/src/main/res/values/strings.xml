@@ -3,10 +3,12 @@
 
     <string name="app_name">Tip Calculator</string>
     <string name="amount">Amount</string>
-    <string name="fifteen_percent">15%</string>
-    <string name="eighteen_percent">18%</string>
+    <string name="people">people in party</string>
+    <string name="fifteen_percent" translatable="false">15%</string>
+    <string name="eighteen_percent" translatable="false">18%</string>
     <string name="custom_tip_percentage">Custom %</string>
+    <string name="average">Total per person</string>
     <string name="tip">Tip</string>
     <string name="total">Total</string>
-    
+
 </resources>
