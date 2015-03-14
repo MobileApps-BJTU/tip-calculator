@@ -29,10 +29,10 @@ public class MainActivity extends Activity
    private TextView percentCustomTextView; // shows custom tip percentage
    private TextView tip15TextView; // shows 15% tip
    private TextView total15TextView; // shows total with 15% tip
-   private TextView totalPerPeople15TextView; // shows total per people with 15% tip
+   private TextView totalPerMember15TextView; // shows total per people with 15% tip
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
-    private TextView totalPerPeopleCustomTextView; // shows total per people with custom tip
+   private TextView totalPerMemberCustomTextView; // shows total per people with custom tip
 
    // called when the activity is first created
    @Override
@@ -49,11 +49,11 @@ public class MainActivity extends Activity
          (TextView) findViewById(R.id.percentCustomTextView);
       tip15TextView = (TextView) findViewById(R.id.tip15TextView);
       total15TextView = (TextView) findViewById(R.id.total15TextView);
-      totalPerPeople15TextView = (TextView)findViewById(R.id.totalPerPeople15TextView);
+      totalPerMember15TextView = (TextView)findViewById(R.id.totalPerMember15TextView);
       tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
-       totalPerPeopleCustomTextView = (TextView) findViewById(R.id.totalPerPeopleCustomTextView);
+       totalPerMemberCustomTextView = (TextView) findViewById(R.id.totalPerMemberCustomTextView);
             
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
@@ -88,7 +88,7 @@ public class MainActivity extends Activity
         // display 15% tip and total formatted as currency
         tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
         total15TextView.setText(currencyFormat.format(fifteenPercentTotal));
-        totalPerPeople15TextView.setText(currencyFormat.format(fifteenPercentTotalPerPeople));
+        totalPerMember15TextView.setText(currencyFormat.format(fifteenPercentTotalPerPeople));
     } // end method updateStandard
 
     // updates the custom tip and total TextViews
@@ -105,7 +105,7 @@ public class MainActivity extends Activity
         // display custom tip and total formatted as currency
         tipCustomTextView.setText(currencyFormat.format(customTip));
         totalCustomTextView.setText(currencyFormat.format(customTotal));
-        totalPerPeopleCustomTextView.setText(currencyFormat.format(customTotalPerPeople));
+        totalPerMemberCustomTextView.setText(currencyFormat.format(customTotalPerPeople));
     } // end method updateCustom
    
    // called when the user changes the position of SeekBar

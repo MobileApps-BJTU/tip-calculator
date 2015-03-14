@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/number_of_people"
+        android:text="@string/member_in_party"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <EditText
@@ -179,19 +179,19 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/totalPerPeopleTextView"
+        android:id="@+id/totalPerMemberTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/totalPerPeople"
+        android:text="@string/total_Per_member"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
-        android:id="@+id/totalPerPeopleLinearLayout"
+        android:id="@+id/totalPerMemberLinearLayout"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_gravity="fill_horizontal" >
 
         <TextView
-            android:id="@+id/totalPerPeople15TextView"
+            android:id="@+id/totalPerMember15TextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -203,7 +203,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/totalPerPeopleCustomTextView"
+            android:id="@+id/totalPerMemberCustomTextView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
