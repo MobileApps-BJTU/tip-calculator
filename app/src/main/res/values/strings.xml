@@ -6,7 +6,7 @@
     <string name="fifteen_percent">15%</string>
     <string name="eighteen_percent">18%</string>
     <string name="custom_tip_percentage">Custom %</string>
-    <string name="tip">Tip</string>
-    <string name="total">Total</string>
+    <string name="total">Total Tip</string>
+    <string name="per">Total per person</string>
     
 </resources>
