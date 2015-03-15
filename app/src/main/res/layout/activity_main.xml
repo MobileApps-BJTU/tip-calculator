@@ -12,6 +12,7 @@
     android:useDefaultMargins="true"
     tools:context=".MainActivity" >
 
+
     <TextView
         android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
@@ -160,6 +161,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <Space />
 
 </GridLayout>
