@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<string name="app_name">Tip Caculator</string>
+<string name="app_name">Tip Calculator</string>
 <string name="amount">Amount</string>
 <string name="fifteen_percent">15%</string>
 <string name="eighteen_percent">18%</string>
