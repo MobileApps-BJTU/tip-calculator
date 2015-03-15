@@ -60,7 +60,8 @@
         android:layout_gravity="fill_horizontal"
         android:digits="0123456789"
         android:inputType="number"
-        android:maxLength="6"/>
+        android:maxLength="6"
+        android:background="@android:color/holo_blue_bright" />
 
     <TextView 
         android:id="@+id/customPercentTextView"
