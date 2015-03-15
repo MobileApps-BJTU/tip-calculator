@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:labelFor="@+id/amountEditText"
-        android:text="Amount"
+        android:text="@string/amount"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -123,7 +123,7 @@
     <TextView
         android:id="@+id/tipTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/tip"
+        android:text="@string/total_tip"
         android:textAppearance="?android:attr/textAppearanceMedium"  />
 
     <LinearLayout
@@ -160,7 +160,7 @@
     <TextView
         android:id="@+id/totalTextView"
         android:layout_gravity="right|center_vertical"
-        android:text="@string/total"
+        android:text="@string/total_per_person"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
