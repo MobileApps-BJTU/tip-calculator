@@ -127,7 +127,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -138,7 +138,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
@@ -164,7 +164,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -175,7 +175,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
