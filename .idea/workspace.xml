@@ -18,16 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14394623-452b-43ac-bae2-29833ce5a6d9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/string.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tip-calculator.iml" afterPath="$PROJECT_DIR$/tip-calculator.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/string.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/string.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TipCalculator.iws" />
@@ -1027,6 +1018,11 @@
       <created>1426088545267</created>
       <updated>1426088545267</updated>
     </task>
+    <task id="LOCAL-00001" summary="text box added to enter the number of people eating&#10;localization for China included&#10;@Author: 13303004 - Hippolyte(王子晗)&#10;">
+      <created>1426419387726</created>
+      <updated>1426419387731</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1079,6 +1075,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="text box added to enter the number of people eating&#10;localization for China included&#10;@Author: 13303004 - Hippolyte(王子晗)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="text box added to enter the number of people eating&#10;localization for China included&#10;@Author: 13303004 - Hippolyte(王子晗)&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
