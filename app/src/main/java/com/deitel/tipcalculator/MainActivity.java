@@ -58,9 +58,9 @@ public class MainActivity extends Activity
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
          currencyFormat.format(billAmount));
-       customerDisplayTextView.setText(
-               currencyFormat.format(customerAmount));
-      updateStandard(); // update the 15% tip TextViews
+       customerDisplayTextView.setText(""+customerAmount);
+
+       updateStandard(); // update the 15% tip TextViews
       updateCustom(); // update the custom tip TextViews
 
       // set amountEditText's TextWatcher
@@ -189,7 +189,8 @@ public class MainActivity extends Activity
             } // end catch
 
             // display currency formatted bill amount
-            customerDisplayTextView.setText(currencyFormat.format(customerAmount));
+            customerDisplayTextView.setText(""+customerAmount);
+
             updateStandard(); // update the 15% tip TextViews
             updateCustom(); // update the custom tip TextViews
         } // end method onTextChanged
