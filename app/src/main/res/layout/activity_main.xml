@@ -32,7 +32,7 @@
         android:maxLength="6" >
 
         <requestFocus />
-    </EditText>       
+    </EditText>
 
     <TextView
         android:id="@+id/amountDisplayTextView"
@@ -44,8 +44,30 @@
         android:background="@android:color/holo_blue_bright"
         android:padding="@dimen/textview_padding"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/numberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:labelFor="@+id/amountEditText"
+        android:text="number of party"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView 
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:background="@android:color/holo_blue_bright"
+        android:maxLength="6" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
         android:id="@+id/customPercentTextView"
         android:layout_width="wrap_content"
         android:layout_gravity="right|center_vertical"
@@ -108,7 +130,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -119,7 +141,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
@@ -145,7 +167,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -156,10 +178,11 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:gravity="center"
-            android:padding="@dimen/textview_padding" 
+            android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
-    <Space />
+
+    <Space />
 
 </GridLayout>
