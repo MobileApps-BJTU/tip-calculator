@@ -154,8 +154,8 @@ public class MainActivity extends Activity
 
          // display currency formatted bill amount
          amountDisplayTextView.setText(currencyFormat.format(billAmount));
-//         updateStandard(); // update the 15% tip TextViews
-//         updateCustom(); // update the custom tip TextViews
+         updateStandard(); // update the 15% tip TextViews
+         updateCustom(); // update the custom tip TextViews
       } // end method onTextChanged
 
       @Override
