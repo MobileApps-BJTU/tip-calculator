@@ -24,12 +24,14 @@ public class MainActivity extends Activity
 
    private double billAmount = 0.0; // bill amount entered by the user
    private double customPercent = 0.18; // initial custom tip percentage
+   private int numberInParty = 1;//number in party entered by the user
    private TextView amountDisplayTextView; // shows formatted bill amount
    private TextView percentCustomTextView; // shows custom tip percentage
    private TextView tip15TextView; // shows 15% tip
    private TextView total15TextView; // shows total with 15% tip
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
+    private TextView partySizeDisplayTextView;//shows number in party
 
    // called when the activity is first created
    @Override
@@ -49,10 +51,13 @@ public class MainActivity extends Activity
       tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
+      partySizeDisplayTextView =
+         (TextView) findViewById(R.id.partySizeDisplayTextView);
             
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
          currencyFormat.format(billAmount));
+      partySizeDisplayTextView.setText(""+numberInParty);
       updateStandard(); // update the 15% tip TextViews
       updateCustom(); // update the custom tip TextViews
 
@@ -60,6 +65,11 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
+
+       //set partySizeEditText's TextChangeListener
+       EditText partySizeEditText =
+               (EditText) findViewById(R.id.partySizeEditText);
+       partySizeEditText.addTextChangedListener(partySizeEditTextWatcher);
       
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
@@ -72,7 +82,7 @@ public class MainActivity extends Activity
    {
       // calculate 15% tip and total
       double fifteenPercentTip = billAmount * 0.15;
-      double fifteenPercentTotal = billAmount + fifteenPercentTip;
+      double fifteenPercentTotal =(billAmount + fifteenPercentTip)/numberInParty;
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
@@ -87,7 +97,7 @@ public class MainActivity extends Activity
 
       // calculate the custom tip and total
       double customTip = billAmount * customPercent;
-      double customTotal = billAmount + customTip;
+      double customTotal = (billAmount + customTip)/numberInParty;
 
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
@@ -154,6 +164,41 @@ public class MainActivity extends Activity
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+
+    private TextWatcher partySizeEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+                                  int before, int count)
+        {
+            // convert partySizeEditText's text to a inter
+            try
+            {
+                numberInParty = Integer.parseInt(s.toString());
+            } // end try
+            catch (NumberFormatException e)
+            {
+                numberInParty = 1; // default if an exception occurs
+            } // end catch
+
+            // display people formatted number in party
+            partySizeDisplayTextView.setText(""+numberInParty);
+            updateStandard(); // update the 15% tip TextViews
+            updateCustom(); // update the custom tip TextViews
+        } // end method onTextChanged
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+        } // end method afterTextChanged
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after)
+        {
+        } // end method beforeTextChanged
+    }; // end partySizeEditTextWatcher
 } // end class MainActivity
 
 
