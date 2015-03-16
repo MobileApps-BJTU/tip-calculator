@@ -22,7 +22,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-
     <EditText
         android:id="@+id/amountEditText"
         android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
         android:layout_row="0"
         android:digits="0123456789"
         android:inputType="number"
-        android:maxLength="6" >
+        android:maxLength="6">
 
         <requestFocus />
     </EditText>
@@ -55,6 +54,20 @@
         android:labelFor="@+id/numberEditText"
         android:text="@string/number_in_party"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:digits="0123456789"
+        android:inputType="number"
+        android:maxLength="6">
+
+        <requestFocus/>
+
+    </EditText>
 
     <TextView
         android:id="@+id/numberDisplayTextView"
