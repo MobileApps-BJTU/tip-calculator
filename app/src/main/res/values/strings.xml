@@ -8,5 +8,6 @@
     <string name="custom_tip_percentage">Custom %</string>
     <string name="tip">Tip</string>
     <string name="total">Total</string>
+    <string name="partySize">number in party</string>
     
 </resources>
