@@ -24,7 +24,9 @@ public class MainActivity extends Activity
 
    private double billAmount = 0.0; // bill amount entered by the user
    private double customPercent = 0.18; // initial custom tip percentage
+   private int numberInParty = 1;// number in party
    private TextView amountDisplayTextView; // shows formatted bill amount
+   private TextView numberInPartyDisplayTextView;//shows number in party
    private TextView percentCustomTextView; // shows custom tip percentage
    private TextView tip15TextView; // shows 15% tip
    private TextView total15TextView; // shows total with 15% tip
@@ -37,11 +39,13 @@ public class MainActivity extends Activity
    {
       super.onCreate(savedInstanceState); // call superclass's version
       setContentView(R.layout.activity_main); // inflate the GUI
-
+      
       // get references to the TextViews 
       // that MainActivity interacts with programmatically
       amountDisplayTextView = 
          (TextView) findViewById(R.id.amountDisplayTextView);
+      numberInPartyDisplayTextView = 
+    	 (TextView) findViewById(R.id.numberInPartyDisplayTextView);
       percentCustomTextView = 
          (TextView) findViewById(R.id.percentCustomTextView);
       tip15TextView = (TextView) findViewById(R.id.tip15TextView);
@@ -53,6 +57,8 @@ public class MainActivity extends Activity
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
          currencyFormat.format(billAmount));
+      numberInPartyDisplayTextView.setText(
+         String.valueOf(numberInParty));
       updateStandard(); // update the 15% tip TextViews
       updateCustom(); // update the custom tip TextViews
 
@@ -60,6 +66,11 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
+      
+      // set numberInPartyEditText TextWatcher
+      EditText numberInPartyEditText = 
+    	 (EditText) findViewById(R.id.numberInPartyEditText);
+      numberInPartyEditText.addTextChangedListener(numberInPartyEditTextWatcher);
       
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
@@ -72,7 +83,7 @@ public class MainActivity extends Activity
    {
       // calculate 15% tip and total
       double fifteenPercentTip = billAmount * 0.15;
-      double fifteenPercentTotal = billAmount + fifteenPercentTip;
+      double fifteenPercentTotal = (billAmount + fifteenPercentTip)/numberInParty;
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
@@ -87,8 +98,8 @@ public class MainActivity extends Activity
 
       // calculate the custom tip and total
       double customTip = billAmount * customPercent;
-      double customTotal = billAmount + customTip;
-
+      double customTotal = (billAmount + customTip)/numberInParty;
+      
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
       totalCustomTextView.setText(currencyFormat.format(customTotal));
@@ -154,6 +165,38 @@ public class MainActivity extends Activity
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+   
+   private TextWatcher numberInPartyEditTextWatcher = new TextWatcher()
+   {
+
+	@Override
+	public void afterTextChanged(Editable arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+			int arg3) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub	
+		try{
+			numberInParty = Integer.parseInt(s.toString());
+		}catch (NumberFormatException e)
+        {
+			numberInParty = 1; // default if an exception occurs
+        }
+	    numberInPartyDisplayTextView.setText(
+	    	         String.valueOf(numberInParty));
+        updateStandard(); // update the 15% tip TextViews
+        updateCustom(); // update the custom tip TextViews
+		
+	}
+   
+   };
 } // end class MainActivity
 
 
