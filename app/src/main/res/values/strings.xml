@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tip Calculator</string>
-    <string name="amount">Amount</string>
+    <string name="app_name">12301146-戴鸿超-超级小费计算器</string>
+    <string name="amount">账单总计</string>
     <string name="fifteen_percent">15%</string>
     <string name="eighteen_percent">18%</string>
-    <string name="custom_tip_percentage">Custom %</string>
-    <string name="tip">Tip</string>
-    <string name="total">Total</string>
-    
+    <string name="custom_tip_percentage">小费百分比 %</string>
+    <string name="tip">小费数</string>
+    <string name="total">人均花销</string>
+
 </resources>
