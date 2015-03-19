@@ -24,12 +24,15 @@ public class MainActivity extends Activity
 
    private double billAmount = 0.0; // bill amount entered by the user
    private double customPercent = 0.18; // initial custom tip percentage
+   private int peopleNum = 1; // number of the people entered by the user
    private TextView amountDisplayTextView; // shows formatted bill amount
    private TextView percentCustomTextView; // shows custom tip percentage
    private TextView tip15TextView; // shows 15% tip
    private TextView total15TextView; // shows total with 15% tip
+   private TextView totalPerMember15TextView; // shows total per people with 15% tip
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
+   private TextView totalPerMemberCustomTextView; // shows total per people with custom tip
 
    // called when the activity is first created
    @Override
@@ -46,9 +49,11 @@ public class MainActivity extends Activity
          (TextView) findViewById(R.id.percentCustomTextView);
       tip15TextView = (TextView) findViewById(R.id.tip15TextView);
       total15TextView = (TextView) findViewById(R.id.total15TextView);
+      totalPerMember15TextView = (TextView)findViewById(R.id.totalPerMember15TextView);
       tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
+       totalPerMemberCustomTextView = (TextView) findViewById(R.id.totalPerMemberCustomTextView);
             
       // update GUI based on billAmount and customPercent 
       amountDisplayTextView.setText(
@@ -60,39 +65,48 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
-      
+
+       // set peopleNumEditText's TextWatcher
+       EditText peopleNumEditText =
+               (EditText) findViewById(R.id.peopleNumEditText);
+       peopleNumEditText.addTextChangedListener(peopleNumEditTextWatcher);
+
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
          (SeekBar) findViewById(R.id.customTipSeekBar);
       customTipSeekBar.setOnSeekBarChangeListener(customSeekBarListener);
    } // end method onCreate
-   
-   // updates 15% tip TextViews
-   private void updateStandard() 
-   {
-      // calculate 15% tip and total
-      double fifteenPercentTip = billAmount * 0.15;
-      double fifteenPercentTotal = billAmount + fifteenPercentTip;
 
-      // display 15% tip and total formatted as currency
-      tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
-      total15TextView.setText(currencyFormat.format(fifteenPercentTotal));
-   } // end method updateStandard
+    // updates 15% tip TextViews
+    private void updateStandard()
+    {
+        // calculate 15% tip and total
+        double fifteenPercentTip = billAmount * 0.15;
+        double fifteenPercentTotal = billAmount + fifteenPercentTip;
+        double fifteenPercentTotalPerPeople = fifteenPercentTotal / peopleNum;
 
-   // updates the custom tip and total TextViews
-   private void updateCustom() 
-   {
-      // show customPercent in percentCustomTextView formatted as %
-      percentCustomTextView.setText(percentFormat.format(customPercent));
+        // display 15% tip and total formatted as currency
+        tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
+        total15TextView.setText(currencyFormat.format(fifteenPercentTotal));
+        totalPerMember15TextView.setText(currencyFormat.format(fifteenPercentTotalPerPeople));
+    } // end method updateStandard
 
-      // calculate the custom tip and total
-      double customTip = billAmount * customPercent;
-      double customTotal = billAmount + customTip;
+    // updates the custom tip and total TextViews
+    private void updateCustom() {
 
-      // display custom tip and total formatted as currency
-      tipCustomTextView.setText(currencyFormat.format(customTip));
-      totalCustomTextView.setText(currencyFormat.format(customTotal));
-   } // end method updateCustom
+        // show customPercent in percentCustomTextView formatted as %
+        percentCustomTextView.setText(percentFormat.format(customPercent));
+
+        // calculate the custom tip and total
+        double customTip = billAmount * customPercent;
+        double customTotal = billAmount + customTip;
+        double customTotalPerPeople = customTotal / peopleNum;
+
+        // display custom tip and total formatted as currency
+        tipCustomTextView.setText(currencyFormat.format(customTip));
+        totalCustomTextView.setText(currencyFormat.format(customTotal));
+        totalPerMemberCustomTextView.setText(currencyFormat.format(customTotalPerPeople));
+    } // end method updateCustom
    
    // called when the user changes the position of SeekBar
    private OnSeekBarChangeListener customSeekBarListener = 
@@ -154,6 +168,37 @@ public class MainActivity extends Activity
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+
+    // event-handling object that responds to peopleNumEditText's events
+    private TextWatcher peopleNumEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+                                  int before, int count)
+        {
+            // convert peopleNumEditText's text to a double
+            try{
+                peopleNum = Integer.parseInt(s.toString());
+            }
+            catch(NumberFormatException ex){
+                peopleNum = 1;
+            }
+            updateStandard(); // update the 15% tip TextViews
+            updateCustom(); // update the custom tip TextViews
+        } // end method onTextChanged
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+        } // end method afterTextChanged
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after)
+        {
+        } // end method beforeTextChanged
+    }; // end amountEditTextWatcher
 } // end class MainActivity
 
 
