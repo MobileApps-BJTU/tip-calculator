@@ -12,6 +12,7 @@ import android.widget.EditText; // for bill amount input
 import android.widget.SeekBar; // for changing custom tip percentage
 import android.widget.SeekBar.OnSeekBarChangeListener; // SeekBar listener
 import android.widget.TextView; // for displaying text
+import android.widget.Toast; //for toast
 
 // MainActivity class for the Tip Calculator app
 public class MainActivity extends Activity 
@@ -30,6 +31,7 @@ public class MainActivity extends Activity
    private TextView total15TextView; // shows total with 15% tip
    private TextView tipCustomTextView; // shows custom tip amount
    private TextView totalCustomTextView; // shows total with custom tip
+    private int amountOfPeople = 1; //amount of people in party
 
    // called when the activity is first created
    @Override
@@ -60,6 +62,12 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
+
+       //set peopleAmountEditText's TestWatcher
+       EditText PeopleAmountEditText =
+               (EditText) findViewById(R.id.peopleAmountEditText);
+       PeopleAmountEditText.setText(String.valueOf(amountOfPeople));
+       PeopleAmountEditText.addTextChangedListener(peopleAmountEditTextWatcher);
       
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
@@ -76,7 +84,8 @@ public class MainActivity extends Activity
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
-      total15TextView.setText(currencyFormat.format(fifteenPercentTotal));
+     // total15TextView.setText(currencyFormat.format(fifteenPercentTotal));
+       updateStandardAverage(); //update the 15% average TextViews
    } // end method updateStandard
 
    // updates the custom tip and total TextViews
@@ -91,9 +100,43 @@ public class MainActivity extends Activity
 
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
-      totalCustomTextView.setText(currencyFormat.format(customTotal));
+      //totalCustomTextView.setText(currencyFormat.format(customTotal));
+       updateCustomAverage(); //update the custom average TextViews
    } // end method updateCustom
-   
+
+    //update the average total by 15%
+    private void updateStandardAverage(){
+        double fifteenPercentTotal = billAmount * 1.15;
+
+        double average = fifteenPercentTotal/amountOfPeople;
+
+        if(((billAmount *115))%amountOfPeople == 0){
+            total15TextView.setText(currencyFormat.format(average));
+        }else{
+            total15TextView.setText(currencyFormat.format(0.0));
+            Toast t = Toast.makeText(MainActivity.this, "Something Wrong", Toast.LENGTH_SHORT);
+            t.show();
+        }
+
+    } // end updateStandardAverage
+
+    //update the average total by custom
+    private void updateCustomAverage(){
+        percentCustomTextView.setText(percentFormat.format(customPercent));
+
+        double customPercentTotal = billAmount * (1+customPercent);
+
+        double average = customPercentTotal/amountOfPeople;
+
+        if(((customPercentTotal*100))%amountOfPeople == 0){
+            totalCustomTextView.setText(currencyFormat.format(average));
+        }else{
+            totalCustomTextView.setText(currencyFormat.format(0.0));
+            Toast t = Toast.makeText(MainActivity.this, "Something Wrong", Toast.LENGTH_SHORT);
+            t.show();
+        }
+    } // end updateStandardAverage
+
    // called when the user changes the position of SeekBar
    private OnSeekBarChangeListener customSeekBarListener = 
       new OnSeekBarChangeListener() 
@@ -120,13 +163,13 @@ public class MainActivity extends Activity
    }; // end OnSeekBarChangeListener
 
    // event-handling object that responds to amountEditText's events
-   private TextWatcher amountEditTextWatcher = new TextWatcher() 
+   private TextWatcher amountEditTextWatcher = new TextWatcher()
    {
       // called when the user enters a number
       @Override
-      public void onTextChanged(CharSequence s, int start, 
-         int before, int count) 
-      {         
+      public void onTextChanged(CharSequence s, int start,
+         int before, int count)
+      {
          // convert amountEditText's text to a double
          try
          {
@@ -135,25 +178,67 @@ public class MainActivity extends Activity
          catch (NumberFormatException e)
          {
             billAmount = 0.0; // default if an exception occurs
-         } // end catch 
+         } // end catch
 
          // display currency formatted bill amount
          amountDisplayTextView.setText(currencyFormat.format(billAmount));
          updateStandard(); // update the 15% tip TextViews
          updateCustom(); // update the custom tip TextViews
+
+
       } // end method onTextChanged
 
       @Override
-      public void afterTextChanged(Editable s) 
+      public void afterTextChanged(Editable s)
       {
       } // end method afterTextChanged
 
       @Override
       public void beforeTextChanged(CharSequence s, int start, int count,
-         int after) 
+         int after)
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+
+    // event-handling object that responds to peopleAmountEditTextWatcher's events
+    private TextWatcher peopleAmountEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+                                  int before, int count)
+        {
+            // convert amountEditText's text to a double
+            try
+            {
+                if(amountOfPeople==0){
+                Toast t = Toast.makeText(MainActivity.this, "number of people cant be zero", Toast.LENGTH_SHORT);
+                t.show();}
+                else
+
+                amountOfPeople = Integer.parseInt(s.toString());
+            } // end try
+            catch (NumberFormatException e)
+            {
+                amountOfPeople = 1; // default if an exception occurs
+            } // end catch
+
+            updateStandard(); // update the 15% tip TextViews
+
+            updateCustom(); // update the custom tip TextViews
+        } // end method onTextChanged
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+        } // end method afterTextChanged
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after)
+        {
+        } // end method beforeTextChanged
+    };// end peopleAmountEditTextWatcher
 } // end class MainActivity
 
 

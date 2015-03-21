@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">小费计算器</string>
+    <string name="amount">总额</string>
+    <string name="peopleAmount">参加人数</string>
+    <string name="fifteen_percent">15%</string>
+    <string name="eighteen_percent">18%</string>
+    <string name="custom_tip_percentage">小费比例 %</string>
+    <string name="tip">总共小费</string>
+    <string name="total">没人总共要付</string>
+</resources>
