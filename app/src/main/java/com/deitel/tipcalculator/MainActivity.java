@@ -211,6 +211,11 @@ public class MainActivity extends Activity
             // convert amountEditText's text to a double
             try
             {
+                if(amountOfPeople==0){
+                Toast t = Toast.makeText(MainActivity.this, "number of people cant be zero", Toast.LENGTH_SHORT);
+                t.show();}
+                else
+
                 amountOfPeople = Integer.parseInt(s.toString());
             } // end try
             catch (NumberFormatException e)
