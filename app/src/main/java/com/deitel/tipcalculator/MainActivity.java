@@ -12,6 +12,7 @@ import android.widget.EditText; // for bill amount input
 import android.widget.SeekBar; // for changing custom tip percentage
 import android.widget.SeekBar.OnSeekBarChangeListener; // SeekBar listener
 import android.widget.TextView; // for displaying text
+import android.widget.Toast;
 
 // MainActivity class for the Tip Calculator app
 public class MainActivity extends Activity
@@ -195,16 +196,22 @@ public class MainActivity extends Activity
             try
             {
                 customerNum = (int) (Double.parseDouble(s.toString()));
+
             } // end try
             catch (NumberFormatException e)
             {
                 customerNum = 0; // default if an exception occurs
             } // end catch
 
-            // display currency formatted bill amount
-            //  amountDisplayTextView.setText(currencyFormat.format(billAmount));
-            updateStandard(); // update the 15% tip TextViews
-            updateCustom(); // update the custom tip TextViews
+            if(customerNum==0){
+                Toast.makeText(getApplicationContext(), "The num of people can't be zero!",
+                        Toast.LENGTH_SHORT).show();
+            }else {
+                // display currency formatted bill amount
+                //  amountDisplayTextView.setText(currencyFormat.format(billAmount));
+                updateStandard(); // update the 15% tip TextViews
+                updateCustom(); // update the custom tip TextViews
+            }
         } // end method onTextChanged
 
         @Override
