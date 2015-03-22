@@ -5,6 +5,7 @@ package com.deitel.tipcalculator;
 import java.text.NumberFormat; // for currency formatting
 
 import android.app.Activity; // base class for activities
+import android.app.AlertDialog;
 import android.os.Bundle; // for saving state information
 import android.text.Editable; // for EditText event handling
 import android.text.TextWatcher; // EditText listener
@@ -181,6 +182,21 @@ public class MainActivity extends Activity
             try
             {
                 peopleAmount = Integer.parseInt(s.toString());
+                if (peopleAmount == 0) {
+                    // create a new AlertDialog Builder
+                    AlertDialog.Builder builder =
+                            new AlertDialog.Builder(MainActivity.this);
+
+                    // set dialog's message to display
+                    builder.setMessage("People number should be more than 0.");
+
+                    // provide an OK button that simply dismisses the dialog
+                    builder.setPositiveButton("OK", null);
+
+                    // create AlertDialog from the AlertDialog.Builder
+                    AlertDialog errorDialog = builder.create();
+                    errorDialog.show(); // display the modal dialog
+                }
             } // end try
             catch (NumberFormatException e)
             {
