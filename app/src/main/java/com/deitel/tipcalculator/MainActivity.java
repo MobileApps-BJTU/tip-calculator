@@ -175,10 +175,11 @@ public class MainActivity extends Activity
          try
          {
             partySize = Integer.parseInt(s.toString());
-         } // end try
+            partySize = partySize == 0?1:partySize;
+         }
          catch (NumberFormatException e)
          {
-        	partySize = 0; // default if an exception occurs
+        	 partySize = 1; // default if an exception occurs
          } // end catch 
 
          // display currency formatted bill amount
