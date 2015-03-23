@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">小费计算器</string>
+    <string name="amount">数量</string>
+    <string name="fifteen_percent">15%</string>
+    <string name="eighteen_percent">18%</string>
+    <string name="custom_tip_percentage">小费百分比 %</string>
+    <string name="tip">消费总计</string>
+    <string name="total">人均消费数量</string>
+    <string name="number_in_party">参加派对总人数</string>
+
+</resources>
