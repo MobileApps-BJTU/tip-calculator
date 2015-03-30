@@ -23,8 +23,10 @@ public class MainActivity extends Activity
       NumberFormat.getPercentInstance();
 
    private double billAmount = 0.0; // bill amount entered by the user
+   private int num = 1; //number in party entered by the user
    private double customPercent = 0.18; // initial custom tip percentage
    private TextView amountDisplayTextView; // shows formatted bill amount
+   private TextView numberDisplayTextView; //shows number of people in the party
    private TextView percentCustomTextView; // shows custom tip percentage
    private TextView tip15TextView; // shows 15% tip
    private TextView total15TextView; // shows total with 15% tip
@@ -42,6 +44,8 @@ public class MainActivity extends Activity
       // that MainActivity interacts with programmatically
       amountDisplayTextView = 
          (TextView) findViewById(R.id.amountDisplayTextView);
+      numberDisplayTextView =
+               (TextView) findViewById(R.id.numberDisplayTextView);
       percentCustomTextView = 
          (TextView) findViewById(R.id.percentCustomTextView);
       tip15TextView = (TextView) findViewById(R.id.tip15TextView);
@@ -50,9 +54,10 @@ public class MainActivity extends Activity
       totalCustomTextView = 
          (TextView) findViewById(R.id.totalCustomTextView);
             
-      // update GUI based on billAmount and customPercent 
+      // update GUI based on billAmount, number of person and customPercent
       amountDisplayTextView.setText(
          currencyFormat.format(billAmount));
+      numberDisplayTextView.setText(String.valueOf(num));
       updateStandard(); // update the 15% tip TextViews
       updateCustom(); // update the custom tip TextViews
 
@@ -60,6 +65,11 @@ public class MainActivity extends Activity
       EditText amountEditText = 
          (EditText) findViewById(R.id.amountEditText);
       amountEditText.addTextChangedListener(amountEditTextWatcher);
+
+       // set numberEditText's TextWatcher
+      EditText numberEditText =
+              (EditText) findViewById(R.id.numberEditText);
+      numberEditText.addTextChangedListener(numberEditTextWatcher);
       
       // set customTipSeekBar's OnSeekBarChangeListener
       SeekBar customTipSeekBar = 
@@ -73,6 +83,8 @@ public class MainActivity extends Activity
       // calculate 15% tip and total
       double fifteenPercentTip = billAmount * 0.15;
       double fifteenPercentTotal = billAmount + fifteenPercentTip;
+
+      fifteenPercentTotal = fifteenPercentTotal/num;
 
       // display 15% tip and total formatted as currency
       tip15TextView.setText(currencyFormat.format(fifteenPercentTip));
@@ -88,6 +100,9 @@ public class MainActivity extends Activity
       // calculate the custom tip and total
       double customTip = billAmount * customPercent;
       double customTotal = billAmount + customTip;
+
+      //calculate the total custom tip by person
+      customTotal = customTotal/ num;
 
       // display custom tip and total formatted as currency
       tipCustomTextView.setText(currencyFormat.format(customTip));
@@ -154,6 +169,43 @@ public class MainActivity extends Activity
       {
       } // end method beforeTextChanged
    }; // end amountEditTextWatcher
+
+    private TextWatcher numberEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,
+                                  int before, int count)
+        {
+            // convert numberEditText's text to a int
+
+            try
+            {
+                num = Integer.parseInt(s.toString());
+            } // end try
+            catch (NumberFormatException e)
+            {
+                num = 1; // default if an exception occurs
+            } // end catch
+
+            // display number
+            numberDisplayTextView.setText(String.valueOf(num));
+
+            updateStandard(); //update the 15% tip TextViews
+            updateCustom(); //update the custom tip TextViews
+        } // end method onTextChanged
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+        } // end method afterTextChanged
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after)
+        {
+        } // end method beforeTextChanged
+    }; // end numberEditTextWatcher
 } // end class MainActivity
 
 
