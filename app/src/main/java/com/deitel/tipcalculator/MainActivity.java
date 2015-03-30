@@ -3,6 +3,7 @@
 package com.deitel.tipcalculator;
 
 import java.text.NumberFormat; // for currency formatting
+import java.util.Locale;
 
 import android.app.Activity; // base class for activities
 import android.os.Bundle; // for saving state information
@@ -14,16 +15,15 @@ import android.widget.EditText; // for bill amount input
 import android.widget.SeekBar; // for changing custom tip percentage
 import android.widget.SeekBar.OnSeekBarChangeListener; // SeekBar listener
 import android.widget.TextView; // for displaying text
+import android.widget.Toast;
 
 // MainActivity class for the Tip Calculator app
 public class MainActivity extends Activity
 {
     // currency and percent formatters
-    private static final NumberFormat currencyFormat =
-            NumberFormat.getCurrencyInstance();
-    private static final NumberFormat percentFormat =
-            NumberFormat.getPercentInstance();
-
+    private static final NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+    private static final NumberFormat percentFormat = NumberFormat.getPercentInstance();
+    private static final NumberFormat numberInstance = NumberFormat.getNumberInstance();
     private double billAmount = 0.0; // bill amount entered by the user
     private double customPercent = 0.18; // initial custom tip percentage
     private TextView amountDisplayTextView; // shows formatted bill amount
@@ -32,17 +32,16 @@ public class MainActivity extends Activity
     private TextView total15TextView; // shows total with 15% tip
     private TextView tipCustomTextView; // shows custom tip amount
     private TextView totalCustomTextView; // shows total with custom tip
-    private TextView customerNumberTextView;
+    private EditText customerNumberTextView;
     private TextView AverageMoneyTextView;
     private TextView Average15MoneyTextView;
-
+    private int number=1;
     private TextView amountTextView;
     private TextView customPercentTextView;
     private TextView tipTextView;
     private TextView totalTextView;
     private TextView AverageTextView;
     private TextView NumberTextView;
-
     private int TranslateState = 1;
     // called when the activity is first created
     @Override
@@ -59,7 +58,7 @@ public class MainActivity extends Activity
         total15TextView = (TextView) findViewById(R.id.total15TextView);
         tipCustomTextView = (TextView) findViewById(R.id.tipCustomTextView);
         totalCustomTextView = (TextView) findViewById(R.id.totalCustomTextView);
-        customerNumberTextView = (TextView)findViewById(R.id.customerNumberTextView);
+        customerNumberTextView = (EditText)findViewById(R.id.customerNumberTextView);
         AverageMoneyTextView = (TextView)findViewById(R.id.AverageMoneyTextView);
         Average15MoneyTextView = (TextView)findViewById(R.id.Average15MoneyTextView);
         amountTextView =  (TextView)findViewById(R.id.amountTextView);
@@ -71,12 +70,13 @@ public class MainActivity extends Activity
 
         //calculate the average money
         final Button catculator = (Button)findViewById(R.id.catculator);
+        /*
         catculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 double average15,average;
-                int number = Integer.parseInt(customerNumberTextView.getText().toString());
+                //number = Integer.parseInt(customerNumberTextView.getText().toString());
                 if(number>1){
                     average15 = billAmount*0.15;
                     average15 +=billAmount;
@@ -91,13 +91,13 @@ public class MainActivity extends Activity
 
                 }
             }
-        });
+        });*/
 
         final Button translate = (Button)findViewById(R.id.translate);
         translate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TranslateState==1){
+                if(TranslateState==2){
                     amountTextView.setText("花费");
                     customPercentTextView.setText("小费率");
                     tipTextView.setText("小费");
@@ -106,8 +106,8 @@ public class MainActivity extends Activity
                     AverageTextView.setText("平均花费");
                     catculator.setText("计算");
                     translate.setText("翻译成英文");
-                    TranslateState=2;
-                }else  if (TranslateState==2){
+                    TranslateState=1;
+                }else  if (TranslateState==1){
                     amountTextView.setText("Amount");
                     customPercentTextView.setText("Custom %");
                     tipTextView.setText("Tip");
@@ -116,24 +116,44 @@ public class MainActivity extends Activity
                     AverageTextView.setText("Average");
                     catculator.setText("catculate");
                     translate.setText("translate to Chinese");
-                    TranslateState=1;
+                    TranslateState=2;
                 }
             }
         });
 
         // update GUI based on billAmount and customPercent
         amountDisplayTextView.setText(currencyFormat.format(billAmount));
+
         updateStandard(); // update the 15% tip TextViews
         updateCustom(); // update the custom tip TextViews
-
+        updataAverage();// update the average
         // set amountEditText's TextWatcher
         EditText amountEditText = (EditText) findViewById(R.id.amountEditText);
+
         amountEditText.addTextChangedListener(amountEditTextWatcher);
+        customerNumberTextView.addTextChangedListener(numberEditTextWatcher);
 
         // set customTipSeekBar's OnSeekBarChangeListener
         SeekBar customTipSeekBar = (SeekBar) findViewById(R.id.customTipSeekBar);
         customTipSeekBar.setOnSeekBarChangeListener(customSeekBarListener);
     } // end method onCreate
+
+    private void updataAverage(){
+
+        double average15,average;
+
+        if(number>=1) {
+            average15 = billAmount * 0.15;
+            average15 += billAmount;
+            average15 = average15 / number;
+            Average15MoneyTextView.setText(currencyFormat.format(average15));
+
+            average = billAmount * customPercent;
+            average += billAmount;
+            average = average / number;
+            AverageMoneyTextView.setText(currencyFormat.format(average));
+        }
+    }
 
     // updates 15% tip TextViews
     private void updateStandard()
@@ -209,6 +229,7 @@ public class MainActivity extends Activity
             amountDisplayTextView.setText(currencyFormat.format(billAmount));
             updateStandard(); // update the 15% tip TextViews
             updateCustom(); // update the custom tip TextViews
+            updataAverage(); //update the average
         } // end method onTextChanged
 
         @Override
@@ -223,6 +244,42 @@ public class MainActivity extends Activity
         } // end method beforeTextChanged
     }; // end amountEditTextWatcher
 
+    private TextWatcher numberEditTextWatcher = new TextWatcher()
+    {
+        // called when the user enters a number
+        @Override
+        public void onTextChanged(CharSequence s, int start,int before, int count)
+        {
+            try
+            {
+                number = Integer.parseInt(s.toString())     ;
+            } // end try
+            catch (NumberFormatException e)
+            {
+                number = 0; // default if an exception occurs
+            } // end catch
+            if(number==0){
+                Toast.makeText(getApplicationContext(), "The num of people can't be zero!",Toast.LENGTH_SHORT).show();
+                         }
+            else {
+                // display currency formatted bill amount
+                updateStandard(); // update the 15% tip TextViews
+                updateCustom(); // update the custom tip TextViews
+                updataAverage(); //update the average
+            }
+        } // end method onTextChanged
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+
+        } // end method afterTextChanged
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,int after)
+        {
+        } // end method beforeTextChanged
+    }; // end amountEditTextWatcher
 
 
 } // end class MainActivity

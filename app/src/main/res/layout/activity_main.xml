@@ -166,7 +166,7 @@
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number"
+        android:text="@string/number"
         android:id="@+id/NumberTextView"
         android:layout_gravity="right|center_vertical"
         android:textSize="20dp"
@@ -180,6 +180,7 @@
         android:layout_gravity="fill_horizontal">
 
         <EditText
+
             android:id="@+id/customerNumberTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -200,7 +201,7 @@
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Average"
+        android:text="@string/Average"
         android:id="@+id/AverageTextView"
         android:layout_gravity="right|center_vertical"
         android:textSize="20dp"
@@ -241,7 +242,7 @@
         android:layout_height="40dp"
         android:layout_width="200dp"
         android:layout_column="1"
-        android:text="translate to Chinese"
+        android:text="翻译成英文"
         android:id="@+id/translate"/>
     <Space />
 </GridLayout>
